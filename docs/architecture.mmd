@@ -1,0 +1,26 @@
+flowchart LR
+  subgraph NAV["Navigateur Chrome de l'étudiant (session LinkedIn déjà ouverte)"]
+    direction TB
+    POP["Popup<br/>activer / désactiver<br/>exécuter · réarmer"]
+    SW["Service worker<br/>background.js<br/>• alarme toutes les X h ± aléa<br/>• fenêtre horaire · plafond 10/jour<br/>• rotation des mots-clés<br/>• file d'attente sans perte<br/>• arrêt automatique"]
+    TAB["Onglet arrière-plan<br/>1 seule page de résultats<br/>search/results/content/?keywords=…"]
+    CS["content.js<br/>• détection CAPTCHA / vérification<br/>• déduplication avant clic « plus »<br/>• extraction texte + compteurs<br/>• auteur haché SHA-256 salé"]
+    POP <--> SW
+    SW -- "ouvre l'URL" --> TAB
+    SW -- "injecte" --> CS
+    CS -- "publications / signal de blocage" --> SW
+  end
+  LI[("LinkedIn")]
+  TAB <--> LI
+  subgraph GOOGLE["Google (cloud)"]
+    direction TB
+    GAS["Apps Script — Web App doPost<br/>jeton · validation · anti-injection<br/>déduplication (verrou)"]
+    SHEET[("Google Sheet<br/>Paramètres · Mots-clés<br/>Publications · Journal<br/>Catégories · Prompt IA")]
+    LLM["=AI() de Google Sheets<br/>ou API Gemini (JSON)"]
+    GAS <--> SHEET
+    SHEET --> LLM
+    LLM -- "thème · intention · signal 0-5<br/>justification · résumé" --> SHEET
+  end
+  SW -- "POST config (paramètres, mots-clés, IDs connus)" --> GAS
+  SW -- "POST publications + journal" --> GAS
+  MKT(("Marketeur")) -- "modifie mots-clés et réglages" --> SHEET

@@ -1,0 +1,1 @@
+{ "name": "veille-linkedin", "private": true, "type": "module", "scripts": { "test": "node --test tests/unitaires.test.mjs", "test:e2e": "node tests/e2e.mjs" } }

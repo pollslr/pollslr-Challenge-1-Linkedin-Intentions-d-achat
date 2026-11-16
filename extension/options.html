@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="fr">
+<head><meta charset="utf-8"><link rel="stylesheet" href="style.css"><title>Options — Veille LinkedIn</title></head>
+<body class="page">
+  <h1>Options — Veille LinkedIn</h1>
+  <p class="discret">Ces réglages restent dans le stockage local de votre navigateur. Aucun mot de passe ni cookie LinkedIn
+    n'est demandé : l'outil utilise la session déjà ouverte dans ce navigateur. Tous les autres paramètres
+    (mots-clés, fréquence, fenêtre horaire, volume) se règlent dans la Google Sheet.</p>
+
+  <label for="urlWebhook">URL de l'application Web Apps Script (se termine par /exec)</label>
+  <input type="url" id="urlWebhook" placeholder="https://script.google.com/macros/s/…/exec">
+
+  <label for="jeton">Jeton d'accès (menu « Veille LinkedIn › Afficher le jeton » dans la Sheet)</label>
+  <input type="password" id="jeton" autocomplete="off">
+
+  <h2>Mode test (démonstration sans LinkedIn)</h2>
+  <label><input type="checkbox" id="modeTest"> Ouvrir une page locale à la place de LinkedIn</label>
+  <input type="text" id="urlTest" placeholder="http://localhost:8765/fixture-resultats.html">
+  <p class="discret">Lancez <code>python3 -m http.server 8765</code> dans le dossier <code>extension/test</code>.
+    Pages fournies : <code>fixture-resultats.html</code> (résultats factices) et <code>fixture-checkpoint.html</code>
+    (page de vérification → arrêt automatique).</p>
+
+  <p style="margin-top:18px">
+    <button id="enregistrer" class="primaire">Enregistrer</button>
+    <button id="tester">Tester la connexion à la Sheet</button>
+  </p>
+  <p class="msg" id="msg"></p>
+  <script src="options.js"></script>
+</body>
+</html>

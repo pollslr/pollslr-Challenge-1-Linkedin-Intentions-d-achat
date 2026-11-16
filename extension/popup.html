@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="fr">
+<head><meta charset="utf-8"><link rel="stylesheet" href="style.css"><title>Veille LinkedIn</title></head>
+<body class="popup">
+  <h1>Veille LinkedIn — signaux d'affaires</h1>
+
+  <div id="alerteArret" class="carte alerte" hidden>
+    <strong>Outil arrêté</strong> — <span id="raisonArret"></span><br>
+    <span class="discret" id="dateArret"></span>
+    <p style="margin:8px 0 6px">Aucune exécution n'aura lieu tant que vous ne réarmez pas l'outil.</p>
+    <button id="rearmer" class="danger">Réarmer (après vérification du compte)</button>
+  </div>
+
+  <div id="nonConfigure" class="carte alerte" hidden>
+    Webhook non configuré. <a href="#" id="lienOptions2">Ouvrir les options</a>.
+  </div>
+
+  <div class="carte">
+    <div class="ligne"><span>Planification</span><span id="planif" class="pastille off">—</span></div>
+    <div class="ligne"><span>Prochaine exécution</span><b id="prochaine">—</b></div>
+    <div class="ligne"><span>Collectées aujourd'hui</span><b id="compteur">—</b></div>
+    <div class="ligne"><span>En attente d'envoi</span><b id="file">—</b></div>
+    <div class="ligne" id="ligneTest" hidden><span>Mode</span><b style="color:#b06000">TEST (pages locales)</b></div>
+  </div>
+
+  <div class="boutons">
+    <button id="basculer" class="primaire">Activer la planification</button>
+    <button id="executer">Exécuter maintenant</button>
+    <button id="simuler">Tester l'arrêt (simulation)</button>
+    <button id="options">Options</button>
+  </div>
+
+  <h2>Journal</h2>
+  <div class="journal" id="journal"></div>
+  <p class="msg discret" id="msg"></p>
+  <script src="popup.js"></script>
+</body>
+</html>

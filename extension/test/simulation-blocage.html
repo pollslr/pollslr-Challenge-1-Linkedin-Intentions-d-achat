@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="fr">
+<head><meta charset="utf-8"><link rel="stylesheet" href="../style.css"><title>Simulation d'un blocage — Veille LinkedIn</title></head>
+<body class="page">
+  <div class="carte">
+    <h1>Démonstration du mécanisme d'arrêt automatique</h1>
+    <p>Cette page reproduit ce que LinkedIn affiche lorsqu'il suspecte une automatisation
+      (titre de vérification + CAPTCHA). Le bouton ci-dessous exécute <b>exactement</b> la même
+      fonction de détection (<code>__veille.analyserPage()</code> de <code>content.js</code>) que sur la page de résultats,
+      puis transmet le signal au service worker, qui coupe la planification et journalise l'arrêt.</p>
+    <button id="lancer" class="primaire">Lancer la simulation</button>
+    <pre id="resultat" class="discret" style="white-space:pre-wrap"></pre>
+  </div>
+
+  <!-- Contenu factice imitant une page de vérification -->
+  <main class="carte alerte">
+    <h1>Vérification de sécurité</h1>
+    <p>Let's do a quick security check — prouvez que vous n'êtes pas un robot.</p>
+    <iframe title="captcha factice" src="about:blank?captcha" width="300" height="60"></iframe>
+  </main>
+
+  <script src="../content.js"></script>
+  <script src="simulation.js"></script>
+</body>
+</html>

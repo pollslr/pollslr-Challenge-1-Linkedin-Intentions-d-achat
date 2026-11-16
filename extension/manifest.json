@@ -1,0 +1,17 @@
+{
+  "manifest_version": 3,
+  "name": "Veille LinkedIn – Signaux d'affaires (exercice)",
+  "version": "1.0.0",
+  "description": "Exercice pédagogique : détecte des signaux d'achat dans les résultats de recherche de publications LinkedIn et les envoie dans une Google Sheet.",
+  "permissions": ["alarms", "storage", "scripting", "tabs"],
+  "host_permissions": [
+    "https://www.linkedin.com/*",
+    "https://script.google.com/*",
+    "https://script.googleusercontent.com/*",
+    "http://localhost/*",
+    "http://127.0.0.1/*"
+  ],
+  "background": { "service_worker": "background.js", "type": "module" },
+  "action": { "default_popup": "popup.html", "default_title": "Veille LinkedIn" },
+  "options_page": "options.html"
+}
